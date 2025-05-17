@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Login</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" crossorigin="anonymous">
+    <!-- Particles.js -->
+    <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+</head>
+<body>
+    <div class="container sign-in-js" id="container" style="position: relative; overflow: hidden;">
+        <!-- Canvas de partículas em background -->
+        <div id="particles-js" style="position: absolute; width: 100%; height: 100%; top: 0; left: 0; z-index: 1;"></div>
+
+        <div class="content first-content">
+            <div class="first-column">
+                <h2 class="title title-primary">Cadastre-se</h2>
+                <p class="description description-primary">Para continuar conectado conosco</p>
+                <p class="description description-primary">faça login com suas informações pessoais</p>
+                <button id="signIn" class="btn btn-primary">Entrar</button>
+            </div>    
+            <div class="second-column">
+                <h2 class="title title-second">Faça login.</h2>
+                <div class="social-media">
+                    <ul class="list-social-media">
+                        <a class="link-social-media" href="#"><li class="item-social-media"><i class="fab fa-facebook-f"></i></li></a>
+                        <a class="link-social-media" href="#"><li class="item-social-media"><i class="fab fa-google-plus-g"></i></li></a>
+                        <a class="link-social-media" href="#"><li class="item-social-media"><i class="fab fa-linkedin-in"></i></li></a>
+                    </ul>
+                </div>
+                <p class="description description-second">Ou use seu e-mail para registro:</p>
+                <form class="form" method="POST" action="/login">
+                    <label class="label-input"><i class="far fa-user icon-modify"></i><input type="text" name="nome" placeholder="Nome" required></label>
+                    <label class="label-input"><i class="far fa-envelope icon-modify"></i><input type="email" name="email" placeholder="E-mail" required></label>
+                    <label class="label-input"><i class="fas fa-lock icon-modify"></i><input type="password" name="senha" placeholder="Senha" required></label>
+                    <button class="btn btn-second" type="submit">Cadastrar</button>        
+                </form>
+            </div>
+        </div>
+
+        <div class="content second-content">
+            <div class="first-column">
+                <h2 class="title title-primary">Olá, amigo!</h2>
+                <p class="description description-primary">Insira seus dados pessoais</p>
+                <p class="description description-primary">e comece sua jornada conosco</p>
+                <button id="signUp" class="btn btn-primary">Cadastrar</button>
+            </div>
+            <div class="second-column">
+                <h2 class="title title-second">Entre</h2>
+                <div class="social-media">
+                    <ul class="list-social-media">
+                        <a class="link-social-media" href="#"><li class="item-social-media"><i class="fab fa-facebook-f"></i></li></a>
+                        <a class="link-social-media" href="#"><li class="item-social-media"><i class="fab fa-google-plus-g"></i></li></a>
+                        <a class="link-social-media" href="#"><li class="item-social-media"><i class="fab fa-linkedin-in"></i></li></a>
+                    </ul>
+                </div>
+                <p class="description description-second">Ou use sua conta:</p>
+                <form class="form" method="POST" action="/login">
+                    <label class="label-input">
+                        <i class="far fa-user icon-modify"></i>
+                        <input type="text" name="nome" placeholder="Nome" required>
+                    </label>
+                    <label class="label-input">
+                        <i class="fas fa-lock icon-modify"></i>
+                        <input type="password" name="senha" placeholder="Senha" required>
+                    </label>
+                    <a class="password" href="#">Esqueceu sua senha?</a>
+                    <button class="btn btn-second" type="submit">Entrar</button>
+                    {% if erro %}
+                        <p style="color: rgb(15, 4, 4); margin-top: 10px;">{{ erro }}</p>
+                    {% endif %}
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+</body>
+</html>

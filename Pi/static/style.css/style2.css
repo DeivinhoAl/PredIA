@@ -1,0 +1,86 @@
+/* Transição suave para o ::before (barra lateral) */
+.content::before {
+    content: "";
+    position: absolute;
+    background-color: #00BFFF;  /* cor atualizada */
+    width: 40%;
+    height: 100%;
+    border-top-left-radius: 15px;
+    border-bottom-left-radius: 15px;
+    left: 0;
+    z-index: 5;
+    transition: all 1s ease;
+}
+
+/* Estados diferentes do ::before para sign-in e sign-up */
+.sign-in-js .content::before {
+    left: 60%;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    border-top-right-radius: 15px;
+    border-bottom-right-radius: 15px;
+}
+
+.sign-up-js .content::before {
+    left: 0;
+    border-top-left-radius: 15px;
+    border-bottom-left-radius: 15px;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
+/* Removi as animações keyframe slidein/slideout para usar transições mais suaves */
+
+/* Conteúdos com transições de opacidade e deslocamento suaves */
+.first-content, .second-content {
+    transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+/* Exemplo para esconder e mostrar conteúdo com deslizamento horizontal */
+/* Quando estiver no estado sign-in-js, ocultar .first-content, mostrar .second-content */
+.sign-in-js .first-content {
+    opacity: 0;
+    transform: translateX(-50px);
+    pointer-events: none;
+}
+
+.sign-in-js .second-content {
+    opacity: 1;
+    transform: translateX(0);
+    pointer-events: auto;
+}
+
+/* Quando estiver no estado sign-up-js, ocultar .second-content, mostrar .first-content */
+.sign-up-js .second-content {
+    opacity: 0;
+    transform: translateX(50px);
+    pointer-events: none;
+}
+
+.sign-up-js .first-content {
+    opacity: 1;
+    transform: translateX(0);
+    pointer-events: auto;
+}
+
+/* Ajustes z-index para evitar sobreposição errada */
+.sign-in-js .first-content {
+    z-index: 1;
+}
+
+.sign-in-js .second-content {
+    z-index: 10;
+}
+
+.sign-up-js .first-content {
+    z-index: 10;
+}
+
+.sign-up-js .second-content {
+    z-index: 1;
+}
+
+/* Mantém seu z-index original para colunas internas se precisar */
+/* Efeito geral fica mais suave, sem movimentos bruscos */
+
+/* Mantenha seus media queries originais para responsividade */
